@@ -28,9 +28,13 @@ console.log(getFieldValues(usersData, 'user')); // --> ['Alex', 'Bob']
 
 // 2) Написать функцию, фильтрующую массив с использованием предиката:
 
-//var numbers = [1, 2, 3, 5, 8, 13, 21, 34, 55];
-//function isEven(x) {/* Проверка на чётность */}
-//console.log(filter(numbers, isEven)); // --> [2, 8, 34]
+var numbers = [1, 2, 3, 5, 8, 13, 21, 34, 55];
+function isEven(x) {
+    if (x % 2 == 0) {
+        return x;
+    }
+}
+console.log(numbers.filter(isEven)); // --> [2, 8, 34]
 
 // 3) Даны 2 строки со словами (без знаков препинания), 
 // вывести те слова (по одному разу), которые встречаются в обоих строках
@@ -50,6 +54,24 @@ console.log(getFieldValues(usersData, 'user')); // --> ['Alex', 'Bob']
 // 5) Соединить все массивы в один, не допуская повторения элементов (порядок не важен):
 // P. S. 1 == '1' (строковое и числовое представление number'ов считать идентичными)
 
-//var totalMessArray = [['a', 1, true], [true, 99, 'aa', undefined], ['1']];
+var totalMessArray = [['a', 1, true], [true, 99, 'aa', undefined], ['1']];
 
-//console.log(makeItClean(totalMessArray)); // --> ['a', 'aa', 1, undefined, true];
+function makeItClean (mArray) {
+    var messArray2 = [];
+    var netPovtora = true;
+    for (var i = 0; i < 3; i++) {
+        for (var j = 0; j < mArray[i].length; j++) {
+            netPovtora = true;
+            for (var l = 0; l < messArray2.length; l++) {
+                if (messArray2[l] == mArray[i][j]) {
+                    netPovtora = false;
+                }
+            }
+           if (netPovtora) {
+              messArray2.push(mArray[i][j]); 
+           } 
+        }
+    }
+ return messArray2;    
+}
+console.log(makeItClean(totalMessArray)); // --> ['a', 'aa', 1, undefined, true];
