@@ -39,9 +39,23 @@ console.log(numbers.filter(isEven)); // --> [2, 8, 34]
 // 3) Даны 2 строки со словами (без знаков препинания), 
 // вывести те слова (по одному разу), которые встречаются в обоих строках
 
-//var firstLongString = 'Load up on guns and bring your friends it\'s fun to lose and to pretend';
-//var secondLongString = 'She\'s over bored and self assured oh no I know a dirty word';
-//console.log(findSimilarWords(firstLongString, secondLongString)); // --> ['and'];
+var firstLongString = 'Load up on guns and bring your friends it\'s fun to lose and to pretend';
+var secondLongString = 'She\'s over bored and self assured oh no I know a dirty word';
+function findSimilarWords(s1, s2) {
+    var r = s1.split(' ');
+    var result = [];
+    r.forEach(function(elem)
+              {
+        var a = s2.match(elem);
+        if (a != null)
+            {
+                result.push(a[0]);
+            }
+    });
+    
+    return result;
+}
+console.log(findSimilarWords(firstLongString, secondLongString)); // --> ['and'];
 
 // 4) Дан IP-адрес (строка) и маска подсети (десятичное число). Написать функцию, которая будет валидировать
 // IP-адрес (4 октета, <= 255), а затем выводить сетевой и широковещательный адреса:
